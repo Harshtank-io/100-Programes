@@ -1,40 +1,46 @@
-// Enter a element at specific postion in array
-// Do not take new array
-
 #include <iostream>
+
 using namespace std;
 
-int insert(int n, int arr[], int index, int val)
+int *insert(int n, int arr[], int val, int pos)
 {
-    for (int i = 0; i <= n; i++)
-    {
-        if (i == index)
-        {
-            arr[i] = val;
-        }
-        cout << arr[i] << endl;
-    }
+    n++; // increse the n by 1
+
+    // Shifting the elements
+    for (int i = n; i >= pos; i--)
+        arr[i] = arr[i - 1];
+
+    arr[pos] = val;
+
+    return arr;
 }
+
 int main()
 {
+    int n;
 
-    int n, index, val; // val is the new element to be inserted at given index
-    cout << "Enter Size of array : ";
+    cout << "Enter the size of the array: ";
     cin >> n;
 
     int arr[n];
 
-    for (int i = 0; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << "arr[" << i << "] : ";6
+        cout << "arr[" << i << "] : ";
         cin >> arr[i];
     }
 
-    cout << "Enter the index to insert the element : ";
-    cin >> index;
+    int pos, val;
 
-    cout << "Enter the val : ";
+    cout << "Enter the value to insert: ";
     cin >> val;
 
-    insert(n, arr, index, val);
+    cout << "Enter the postion: ";
+    cin >> pos;
+
+    insert(n, arr, val, pos);
+
+    for (int i = 0; i < n + 1; i++)
+        cout << arr[i] << " ";
+    cout << endl;
 }
