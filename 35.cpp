@@ -1,27 +1,51 @@
 #include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
-void intersection(int a1[], int a2[], int m, int n)
+class Solution
 {
-    for (int i = 0; i < m; i++)
+public:
+    vector<int> intersect(vector<int> &num1, vector<int> &nums2)
     {
-        for (int j = 0; j < n; j++)
+        unordered_map<int, int> freq;
+        vector<int> result;
+
+        // count the frequency of each in num1
+        for (int num : num1)
+            freq[num]++;
+
+        // check each element in num2 against the ferq map
+        for (int num : nums2)
         {
-            if (a1[i] == a2[j] || a1[j] == a2[i])
-                cout << " " << a1[i] << endl;
+            if (freq[num] > 0)
+            {
+                result.push_back(num);
+                freq[num]--;
+            }
         }
+
+        // sort the result
+        sort(result.begin(), result.end());
+
+        return result;
     }
-}
+};
 
 int main()
 {
+    Solution sol;
 
-    int arr1[] = {1, 2, 3, 4, 3, 5, 4, 3};
-    int arr2[] = {1, 2, 2, 3, 2, 3, 4, 5};
+    vector<int> num1 = {1, 2, 3, 3, 32, 1};
+    vector<int> num2 = {2, 1, 3, 2};
 
-    int m = sizeof(arr1) / sizeof(int);
-    int n = sizeof(arr2) / sizeof(int);
+    vector<int> result = sol.intersect(num1, num2);
 
-    intersection(arr1, arr2, m, n);
+    // print the result
+    cout << "Intersection : ";
+    for (int num : result)
+        cout << num << " ";
+    cout << endl;
 }
