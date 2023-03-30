@@ -11,7 +11,7 @@ struct Node
 };
 
 // inserting the node
-void insert(Node **head, int data)
+void insert(Node *head, int data)
 {
     Node *newNode = new Node();
     newNode->data = data;
@@ -82,3 +82,5 @@ int main()
     cout << "Sorted linked list in ascending order: ";
     dispaly(head);
 }
+
+//done
