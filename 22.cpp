@@ -10,7 +10,7 @@ int p1(int n)
 
     for (int i = 0; i < n; i++)
     {
-        if (i.length % 2 == 0)
+        if (i.leng % 2 == 0)
         {
             cout << a;
             //   a++;
@@ -72,9 +72,9 @@ int main()
 
     // p1(n);
 
-    // p2(n);
+    p2(n);
 
-    p3(n);
+    // p3(n);
 
     return 0;
 }
